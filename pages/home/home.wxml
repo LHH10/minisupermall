@@ -1,0 +1,21 @@
+<!--pages/home/home.wxml-->
+<!-- 1.轮播图展示 -->
+<w-swiper images="{{banners}}" swiper="w-swiper"/>
+
+<!-- 2.推荐数据展示 -->
+<w-recommend recommends="{{recommends}}" bind:imageLoad="handleImageLoad"/>
+
+<!-- 3.本周流行展示 -->
+<w-popular/>
+
+<!-- 4.tab-control导航栏 -->
+<w-tab-control titles="{{titles}}" bind:tabclick="handleTabClick" 
+               id="tab-control"
+               class="{{isTabFixed ? 'fixed': ''}}"/>
+<w-tab-control titles="{{titles}}" wx:if="{{isTabFixed}}"/>
+<!-- 5.展示商品数据 -->
+<w-goods goods="{{goods[currentType].list}}"/>
+
+<!-- 6.返回顶部 -->
+<!-- hidden属性对于自定义组件无效 -->
+<w-back-top wx:if="{{showBackTop}}"/>
